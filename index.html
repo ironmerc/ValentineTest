@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff3366;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+        button {
+            font-size: 1.5em;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+        .yes {
+            background-color: #ff66b2;
+            color: white;
+        }
+        .yes:hover {
+            background-color: #ff3385;
+        }
+        .no {
+            background-color: #ffcccc;
+            color: black;
+        }
+        .no:hover {
+            background-color: #ff9999;
+        }
+
+        .message {
+            font-size: 1.5em;
+            color: #cc0052;
+            max-width: 60%; /* Restricts width for better readability */
+            word-wrap: break-word;
+            text-align: center;
+            margin-top: 20px;
+            display: none; /* Initially hidden */
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: absolute;
+            color: #ff3366;
+            font-size: 20px;
+            animation: float 5s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Will You Be My Valentine? 💖</h1>
+    <p id="message" class="message">
+        You are dumb if you clicked Yes at once but I love you so muchh!!! 💕  
+        I would have called you neeche or said **look at your balcony** if I had the gift,  
+        but unfortunately, **kya hi kar sakte hai** 😔
+    </p>
+    
+    <div class="buttons" id="button-container">
+        <button class="yes" id="yes-btn" onclick="showLove()">Yes! 💕</button>
+        <a href="no.html" id="no-link"><button class="no" id="no-btn">No 🙈</button></a>
+    </div>
+
+    <script>
+        function showLove() {
+            document.getElementById("message").style.display = "block";
+            document.getElementById("button-container").style.display = "none";
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            document.body.appendChild(heart);
+
+            let size = Math.random() * 20 + 10 + "px";
+            heart.style.fontSize = size;
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>

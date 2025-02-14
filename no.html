@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Really? Think Again... 😢</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 2em;
+            color: #ff3366;
+            transition: all 0.3s ease-in-out;
+        }
+        .no {
+            background-color: #ffcccc;
+            color: black;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease-in-out;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        .message {
+            font-size: 1.5em;
+            color: #cc0052;
+            max-width: 80vw;
+            word-wrap: break-word;
+            text-align: center;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease-in-out;
+        }
+        .home {
+            margin-top: 25px;
+            font-size: 1.2em;
+            text-decoration: none;
+            color: white;
+            background-color: #ff66b2;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+        .home:hover {
+            background-color: #ff3385;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">Really? Think Again... 😢</h1>
+    <button class="no" id="no-btn" onclick="expandNo()">No 🙈</button>
+    <p class="message" id="message">Are you sure? 🥺</p>
+    <a href="index.html" class="home">Go Back and Choose Love 💕</a>
+
+    <script>
+        let noMessages = [
+            "Are you sure? 🥺",
+            "Think again... 😢",
+            "Last chance... 😭",
+            "Please? 😞",
+            "You can't say no forever! 😘",
+            "What if I buy you food? 🍕",
+            "I’ll let you pick the movie! 🎥",
+            "How about a cute date? 🍦",
+            "Don’t break my heart 💔",
+            "Even Google says you should say YES! 🤖",
+            "I'll be so sad 😭",
+            "I asked your pet, and they said yes 🐶",
+            "I promise I won’t steal your fries 🍟",
+            "C'mon, I even made a website for this! 😤",
+            "You know you want to! 😏"
+        ];
+        let noClickCount = 0;
+        let noButton = document.getElementById("no-btn");
+        let messageBox = document.getElementById("message");
+        let title = document.getElementById("title");
+        let maxNoClicks = noMessages.length;
+
+        function expandNo() {
+            if (noClickCount >= maxNoClicks) return;
+
+            noClickCount++;
+
+            if (noClickCount < noMessages.length) {
+                messageBox.innerText = noMessages[noClickCount];
+            } else {
+                noButton.style.width = "100vw";
+                noButton.style.height = "100vh";
+                noButton.style.fontSize = "3em";
+                noButton.innerText = "YOU HAVE TO SAY YES! 😈";
+                messageBox.style.display = "none";
+                title.style.display = "none";
+                return;
+            }
+
+            let newSize = 1 + noClickCount * 0.1;
+            noButton.style.transform = `scale(${newSize})`;
+
+            // Dynamically adjust title and message position based on button size
+            let buttonRect = noButton.getBoundingClientRect();
+            title.style.marginBottom = `${Math.min(40, buttonRect.height / 3)}px`; 
+            messageBox.style.marginTop = `${Math.min(40, buttonRect.height / 3)}px`; 
+        }
+    </script>
+</body>
+</html>
