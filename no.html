@@ -57,6 +57,16 @@
             transition: all 0.3s ease-in-out;
         }
 
+        .final-message {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: black;
+            display: none;
+            max-width: 90%;
+            word-wrap: break-word;
+            text-align: center;
+        }
+
         .home {
             margin-top: 25px;
             font-size: 1.2em;
@@ -89,6 +99,10 @@
                 max-width: 95%;
             }
 
+            .final-message {
+                font-size: 2em; /* Adjusts final message size for mobile */
+            }
+
             .home {
                 font-size: 1em;
                 padding: 8px 15px;
@@ -100,6 +114,7 @@
     <h1 id="title">Really? Think Again... 😢</h1>
     <button class="no" id="no-btn" onclick="expandNo()">No 🙈</button>
     <p class="message" id="message">Are you sure? 🥺</p>
+    <p class="final-message" id="final-message">YOU HAVE TO SAY YES! 😈</p>
     <a href="index.html" class="home">Go Back and Choose Love 💕</a>
 
     <script>
@@ -123,6 +138,7 @@
         let noClickCount = 0;
         let noButton = document.getElementById("no-btn");
         let messageBox = document.getElementById("message");
+        let finalMessage = document.getElementById("final-message");
         let title = document.getElementById("title");
         let maxNoClicks = noMessages.length;
 
@@ -134,12 +150,10 @@
             if (noClickCount < noMessages.length) {
                 messageBox.innerText = noMessages[noClickCount];
             } else {
-                noButton.style.width = "100vw";
-                noButton.style.height = "100vh";
-                noButton.style.fontSize = "3em";
-                noButton.innerText = "YOU HAVE TO SAY YES! 😈";
-                messageBox.style.display = "none";
-                title.style.display = "none";
+                noButton.style.display = "none";  // Hides the "No" button
+                title.style.display = "none";  // Hides the title
+                messageBox.style.display = "none";  // Hides messages
+                finalMessage.style.display = "block"; // Shows the final text
                 return;
             }
 
