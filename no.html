@@ -15,12 +15,18 @@
             align-items: center;
             height: 100vh;
             flex-direction: column;
+            padding: 10px;
         }
+
         h1 {
             font-size: 2em;
             color: #ff3366;
+            margin-bottom: 20px;
+            max-width: 90%;
+            word-wrap: break-word;
             transition: all 0.3s ease-in-out;
         }
+
         .no {
             background-color: #ffcccc;
             color: black;
@@ -35,11 +41,14 @@
             border-radius: 10px;
             position: relative;
             z-index: 2;
+            width: 250px;
+            height: 60px;
         }
+
         .message {
-            font-size: 1.5em;
+            font-size: 1.3em;
             color: #cc0052;
-            max-width: 80vw;
+            max-width: 90%;
             word-wrap: break-word;
             text-align: center;
             margin-top: 15px;
@@ -47,6 +56,7 @@
             z-index: 1;
             transition: all 0.3s ease-in-out;
         }
+
         .home {
             margin-top: 25px;
             font-size: 1.2em;
@@ -55,9 +65,34 @@
             background-color: #ff66b2;
             padding: 10px 20px;
             border-radius: 8px;
+            transition: all 0.3s ease-in-out;
         }
+
         .home:hover {
             background-color: #ff3385;
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .no {
+                font-size: 1.2em;
+                width: 200px;
+                height: 55px;
+            }
+
+            .message {
+                font-size: 1.1em;
+                max-width: 95%;
+            }
+
+            .home {
+                font-size: 1em;
+                padding: 8px 15px;
+            }
         }
     </style>
 </head>

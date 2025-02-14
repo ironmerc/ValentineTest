@@ -15,24 +15,39 @@
             align-items: center;
             height: 100vh;
             flex-direction: column;
+            padding: 10px;
         }
+
         h1 {
-            font-size: 2.5em;
+            font-size: 2.2em;
             color: #ff3366;
             margin-bottom: 20px;
+            max-width: 90%;
+            word-wrap: break-word;
         }
+
         .buttons {
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
             gap: 20px;
         }
+
         button {
-            font-size: 1.5em;
-            padding: 15px 30px;
+            font-size: 1.3em;
+            padding: 12px 25px;
             border: none;
             cursor: pointer;
             border-radius: 10px;
             transition: all 0.3s ease-in-out;
+            width: 250px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
         .yes {
             background-color: #ff66b2;
             color: white;
@@ -48,21 +63,26 @@
             background-color: #ff9999;
         }
 
+        /* Removes underline from "No" button */
+        a {
+            text-decoration: none;
+        }
+
         .message {
-            font-size: 1.5em;
+            font-size: 1.3em;
             color: #cc0052;
-            max-width: 60%; /* Restricts width for better readability */
+            max-width: 90%;
             word-wrap: break-word;
             text-align: center;
-            margin-top: 20px;
-            display: none; /* Initially hidden */
+            margin-top: 15px;
+            display: none;
         }
 
         /* Floating hearts */
         .heart {
             position: absolute;
             color: #ff3366;
-            font-size: 20px;
+            font-size: 18px;
             animation: float 5s linear infinite;
             opacity: 0.7;
         }
@@ -77,6 +97,29 @@
                 opacity: 0;
             }
         }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            button {
+                font-size: 1.2em;
+                padding: 10px 20px;
+                width: 200px;
+                height: 55px;
+            }
+
+            .message {
+                font-size: 1.1em;
+                max-width: 95%;
+            }
+
+            .buttons {
+                gap: 25px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -89,7 +132,7 @@
     
     <div class="buttons" id="button-container">
         <button class="yes" id="yes-btn" onclick="showLove()">Yes! 💕</button>
-        <a href="no.html" id="no-link"><button class="no" id="no-btn">No 🙈</button></a>
+        <a href="no.html"><button class="no" id="no-btn">No 🙈</button></a>
     </div>
 
     <script>
@@ -104,7 +147,7 @@
             heart.innerHTML = "❤️";
             document.body.appendChild(heart);
 
-            let size = Math.random() * 20 + 10 + "px";
+            let size = Math.random() * 15 + 10 + "px";
             heart.style.fontSize = size;
             heart.style.left = Math.random() * 100 + "vw";
             heart.style.animationDuration = Math.random() * 3 + 3 + "s";
